@@ -1,0 +1,51 @@
+﻿@model PuntoDeVentaAlm.Models.TBL_PRESENTACIONES_PRODUCT
+
+<div class="form-horizontal">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">NUEVA PRESENTACION</h3>
+        </div>
+        <div class="panel-body">
+
+    @using (Ajax.BeginForm("registraPresentacion", new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        InsertionMode = System.Web.Mvc.Ajax.InsertionMode.Replace,
+        UpdateTargetId = "mensajeP",
+        Confirm = "¿Desea crear nueva presentación?"
+    }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+                <div class="form-group">
+                    @Html.Label("PRODUCTO", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ID_PRODUCTO", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("DESCRIPCIÓN", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.DESCRIPCION, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("UNIDADES", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBox("UNIDADES")
+                    </div>
+                </div>
+
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="REGISTRAR" class="btn btn-default" />
+                    <br />
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+﻿@model PuntoDeVentaAlm.Models.TBL_DETALLE_LOTE
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>@ViewBag.Lote</h2>
+
+<div>
+    <h4>@ViewBag.Prodcuto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("ID PRODUCTO")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_LOTE_PRODUCCION.ID_PRODUC)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.CANTIDAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANTIDAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VEDIDOS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VEDIDOS)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("FECHA DE REGISTRO")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_REGISTRO)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("EDITABLE")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISPONIBLE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Regresar a Lista de LOTES", "Index","Lote")
+</p>

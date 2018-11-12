@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PuntoDeVentaAlm.Models.TBL_DETALLE_LOTE>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CANTIDAD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VEDIDOS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_REGISTRO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DISPONIBLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_USU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_LOTE_PRODUCCION.ID_PRODUC)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CANTIDAD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VEDIDOS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_REGISTRO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DISPONIBLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_USU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBL_LOTE_PRODUCCION.ID_PRODUC)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_DETALLE }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_DETALLE }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_DETALLE })
+        </td>
+    </tr>
+}
+
+</table>

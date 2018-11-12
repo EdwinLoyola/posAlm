@@ -1,0 +1,73 @@
+﻿@model PuntoDeVentaAlm.Models.TBL_DETALLE_LOTE
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TBL_DETALLE_LOTE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CANTIDAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANTIDAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VEDIDOS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VEDIDOS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_REGISTRO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_REGISTRO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISPONIBLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISPONIBLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_USU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_USU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_LOTE_PRODUCCION.ID_PRODUC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_LOTE_PRODUCCION.ID_PRODUC)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

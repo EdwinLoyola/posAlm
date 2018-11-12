@@ -1,0 +1,94 @@
+﻿@model PuntoDeVentaAlm.Models.TBL_DETALLES_INVENT
+
+    @using (Ajax.BeginForm("registraProducInvent", new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        OnSuccess = "resultado",
+        InsertionMode = System.Web.Mvc.Ajax.InsertionMode.Replace,
+        
+    }))
+    {
+            <div class="panel panel-default" id="formulario">
+                <div class="panel-heading">
+                    <h3 class="panel-title">CAPTURA INVENTARIO</h3>
+                </div>
+
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.Label("ID INVENTARIO", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ID_INVENTARIO", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_INVENTARIO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("PRODUCTO", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="text" name="ID_PRODUC" id="ID_PRODUC" placeholder="Ingresa producto..." v-model="producto" class="form-control">
+                        @Html.ValidationMessageFor(model => model.ID_PRODUC, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("CANTIDAD", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="text" name="CANTIDAD" id="CANTIDAD" placeholder="Ingresa cantidad..." onkeypress="return controltag(event)" v-model ="cantidad" class="form-control">
+                        @Html.ValidationMessageFor(model => model.CANTIDAD, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="REGISTRAR" class="btn btn-default" />
+                    <br />
+                </div>
+                <div class="panel-body">
+                </div>
+            </div>
+            }
+<div id="alert_placeholder"></div>
+<script src="~/Scripts/vue.js"></script>
+@*<script src="~/Scripts/vue-resource.js"></script>*@
+<script>
+    function resultado(data)
+    {
+        switch (data.result)
+        {
+            case 0:
+                $('#alert_placeholder').html('<div class=\"alert alert-success\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button><strong>' + data.message + '</strong> </div>')
+                break;
+            case 1:
+            case 6:
+            case 7:
+                $('#alert_placeholder').html('<div class=\"alert alert-warning\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button><strong>' + data.message + '</strong> </div>')
+                break;
+            case 2:
+                $('#alert_placeholder').html('<div class=\"alert alert-danger\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button><strong>' + data.message + '</strong> </div>')
+                break;
+            case 3:
+            case 4:
+            case 5:
+                $('#alert_placeholder').html('<div class=\"alert alert-info\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button><strong>' + data.message + '</strong> </div>')
+                app.limpia();
+                break;
+        }
+    }
+
+    function controltag(e)
+    {
+        tecla = (document.all) ? e.keyCode : e.which;
+        if (tecla == 8) return true; // para la tecla de retroseso
+        else if (tecla == 0 || tecla == 9) return true; //<-- PARA EL TABULADOR-> su keyCode es 9 pero en tecla se esta transformando a 0 asi que porsiacaso los dos
+        //patron = /[0-9\s]/;// -> solo letras
+        //patron =/[0-9\s]/;// -> solo numeros
+        patron = /^(\d|-)?(\d|,)*\.?\d*$/
+        te = String.fromCharCode(tecla);
+        return patron.test(te);
+    }
+</script>
+
+
+
+

@@ -1,0 +1,104 @@
+﻿@model IEnumerable<PuntoDeVentaAlm.Models.TBL_INVENTARIOS>
+
+@{
+    ViewBag.Title = "INVENTARIOS";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>INVENTARIOS</h2>
+
+<p>
+    @Ajax.ActionLink("Nuevo Inventario", "nuevoInventario", new AjaxOptions
+    { 
+        HttpMethod = "POST",
+        UpdateTargetId = "nuevoInv"
+    })
+</p>
+
+<div id="nuevoInv">
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("ALMACEN")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OBSERVACIONES)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBL_ALMACENES.NOM_ALMACEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESTATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OBSERVACIONES)
+        </td>
+
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID_INVENTARIO })|
+            @Html.ActionLink("Reporte", "reporteInvent", new { id = item.ID_INVENTARIO}, new { target = "_blank" })
+          | @if (item.ESTATUS == true)
+            {
+                <input type="button" value="Ajustar" name="@item.ID_INVENTARIO" onclick="ajuntaInvent(this.name)" class="btn btn-default">
+            }
+        </td>
+    </tr>
+}
+
+</table>
+
+<div id="alert_placeholder"></div>
+
+@section scripts
+{
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script>
+        function ajuntaInvent(idInvent) {
+            if (confirm("DESEA AJUSTAR INVENTARIO? /n ESTO DARÁ POR CERRADO EL PROCESO DE INVENTARIO")) {
+
+                var url = "@Url.Action("ajustaInventario", "Inventarios")";
+                var idInv = idInvent
+                var data = { idInv: idInv };
+
+                $.post(url, data).done(function (data) {
+                    resultado(data);
+                })
+            }
+        }
+
+        function resultado(data) {
+            switch (data.result) {
+                case 0:
+                    $('#alert_placeholder').html('<div class=\"alert alert-success\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button><strong>' + data.message + '</strong> </div>')
+                    break;
+                case 1:
+                    $('#alert_placeholder').html('<div class=\"alert alert-warning\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button><strong>' + data.message + '</strong> </div>')
+                    break;
+                case 2:
+                    $('#alert_placeholder').html('<div class=\"alert alert-danger\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button><strong>' + data.message + '</strong> </div>')
+                    break;
+                case 3:
+                    $('#alert_placeholder').html('<div class=\"alert alert-info\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button><strong>' + data.message + '</strong> </div>')
+                    app.limpia();
+                    break;
+            }
+        }
+
+    </script>
+}

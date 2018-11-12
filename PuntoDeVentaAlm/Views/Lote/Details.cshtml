@@ -1,0 +1,43 @@
+﻿@model PuntoDeVentaAlm.Models.TBL_LOTE_PRODUCCION
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>DETALLES</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.ID_LOTE) </h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayName("PRODUCTO")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_PRODUCTOS.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("COSTO PRODUCCIÓN")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COSTO_PRODUCCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("FECHA PRODUCCIÓN")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_PRODUC)
+        </dd>
+
+    </dl>
+</div>
+<p> |
+    @Html.ActionLink("Regresar Lista de Lotes", "Index","Lote")
+</p>

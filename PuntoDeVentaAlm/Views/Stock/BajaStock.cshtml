@@ -1,0 +1,105 @@
+﻿@model PuntoDeVentaAlm.Models.TBL_STOCK
+@{
+    ViewBag.Title = "Salida";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>REGISTRAR SALIDA DE MERCANCÍA</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.Label("PRODUCTO", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <!--    @Html.DropDownList("ID_PRODUC", null, htmlAttributes: new { @class = "form-control"}) -->
+                @Html.TextBoxFor(model => model.ID_PRODUC, new { htmlAttributes = new { @class = "form-control" } })
+                <!--UM : <input id="UM" readonly> -->
+                @Html.ValidationMessageFor(model => model.ID_PRODUC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("CANTIDAD", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <!--@Html.EditorFor(model => model.STOCK, new { htmlAttributes = new { @class = "form-control" } }) -->
+                <input type="text" name="STOCK" id="STOCK" onkeypress="return controltag(event)" />
+                @Html.ValidationMessageFor(model => model.STOCK, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("ALMACEN", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID_ALMAC", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_ALMAC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Lista de Stock", "Index")
+</div>
+
+<div>
+    @Html.Raw(ViewBag.Confirma)
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script>
+                $(document).ready(function () {
+                    /*$(function () {
+                        $("#ID_PRODUC").autocomplete({
+                            source: "/Stock/Buscarproducto",
+                            minLength: 2,
+                            select: function (event, ui) {
+                                event.preventDefault();
+                                $("#ID_PRODUC").val(ui.item.DESCRIPCION);
+                                $("#UM").val(ui.item.U_Medida);
+                            }
+                        });
+                    });*/
+
+                    //FUNCION DE AUTOCOMPLETE PARA PRODUCTOS
+                    $(function () {
+                        $("#ID_PRODUC").autocomplete({
+                            source: "/Stock/Buscarproducto"
+                        });
+                    });
+
+                });
+
+
+
+                //FUNCION QUE SOLO PERMITE INTRODUCIR  NUMEROS A UNA CAJA DE TEXTO
+                function controltag(e)
+                {
+                    tecla = (document.all) ? e.keyCode : e.which;
+                    if (tecla == 8) return true; // para la tecla de retroseso
+                    else if (tecla == 0 || tecla == 9) return true; //<-- PARA EL TABULADOR-> su keyCode es 9 pero en tecla se esta transformando a 0 asi que porsiacaso los dos
+                    //patron = /[0-9\s]/;// -> solo letras
+                    //patron =/[0-9\s]/;// -> solo numeros
+                    patron = /^(\d|-)?(\d|,)*\.?\d*$/
+                    te = String.fromCharCode(tecla);
+                    return patron.test(te);
+                }
+    </script>
+
+}
+
+
+
+

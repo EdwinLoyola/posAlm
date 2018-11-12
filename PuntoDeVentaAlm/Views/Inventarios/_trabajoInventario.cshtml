@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PuntoDeVentaAlm.Models.TBL_DETALLES_INVENT>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">INVENTARIO DE @ViewBag.nomAlm</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table" id="detalleInventario">
+            <tr>
+                <th>
+                    @Html.DisplayName("ID PRODUCTO")
+                </th>
+                <th>
+                    @Html.DisplayName("DESCRIPCION")
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CANTIDAD)
+                </th>
+                <th>
+                    @Html.DisplayName("USUARIO")
+                </th>
+                <th></th>
+            </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID_PRODUC)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TBL_PRODUCTOS.DESCRIPCION)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CANTIDAD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID_USER_ASP)
+                        </td>
+                        <td>
+                            <input type="button" value="Eliminar" id="@item.ID_DET_INV" name="@item.ID_DET_INV" onclick="eliminaProducto(this.name)" class="btn btn-default">
+                        </td>
+                    </tr>
+                }
+        </table>
+
+    </div>
+    <div id="alert_placeholder"></div>
+</div>

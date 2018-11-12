@@ -1,0 +1,31 @@
+﻿@model IEnumerable<PuntoDeVentaAlm.Models.TBL_PRESENTACIONES_PRODUCT>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">TABLA PRESENTACIONES DE @ViewBag.Descripcion</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table-responsive">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DESCRIPCION)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UNIDADES)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.DESCRIPCION, "Edit", new { id = item.ID_PRESENCTACION })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UNIDADES)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

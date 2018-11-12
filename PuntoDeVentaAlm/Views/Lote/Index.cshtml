@@ -1,0 +1,81 @@
+﻿@model IEnumerable<PuntoDeVentaAlm.Models.TBL_LOTE_PRODUCCION>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>PRODUCCIÓN LA ALMENDRITA</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Lote", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("LOTE")
+        </th>
+        <th>
+            @Html.DisplayName("PRODUCTO")
+        </th>
+        <th>
+            @Html.DisplayName("COSTO")
+        </th>
+        <th>
+            @Html.DisplayName("F. PRODUCCIÓN")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ABIERTO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.ID_LOTE, "RedireccionaCreate", new { id = item.ID_PRODUC, idLot = item.ID_LOTE })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESCRIPCION)
+        </td>
+        <td>
+            $@Html.DisplayFor(modelItem => item.COSTO_PRODUCCION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_PRODUC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ABIERTO)
+        </td>
+        <td>
+            | @Html.ActionLink("Detalle", "DetailsLote", new { id = item.ID_LOTE, product = item.ID_PRODUC }) |
+            @Html.ActionLink("Tarjetón", "tarjetonLote", new { id = item.ID_LOTE, product = item.ID_PRODUC }, new { target = "_blank" }) |
+            <input type="button" value="Cancelar" name="@item.ID_LOTE" onclick="cancelaLote(this.name)" class="btn btn-default"></td>
+    </tr>
+}
+
+</table>
+
+<div id="Cancela">
+</div>
+@Html.Raw(ViewBag.Salida)
+
+@section scripts
+{
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script>
+        function cancelaLote(idLote) {
+                if (confirm("DESEA CANCELAR EL LOTE?")) {
+
+                    var url = "@Url.Action("cancelaLote","Lote")";
+                    var idLot=idLote
+                    var data = {idLot : idLot};
+
+                    $.post(url, data).done(function (data) {
+                        $("#Cancela").html("<div class=\"alert alert-success\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button><strong>El LOTE ha sido cancelado exitosamente.</strong> </div>")
+                    }).fail("<div class=\"alert alert-warning\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button><strong>No se puede cancelar un LOTE que ya tiene ventas o salida de mercancia.</strong> </div>")
+                }
+        }
+
+    </script>
+}

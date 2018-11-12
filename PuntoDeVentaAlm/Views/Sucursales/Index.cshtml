@@ -1,0 +1,78 @@
+﻿@model IEnumerable<PuntoDeVentaAlm.Models.TBL_SUCURSALES>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>SUCURSALES</h2>
+
+<p>
+    @Html.ActionLink("Nueva Sucursal", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("SUCURSAL")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PAIS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTADO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CALLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NUMERO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COLONIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CP)
+        </th>
+        <th>
+            @Html.DisplayName("ACTIVA")
+        </th>
+        <th>
+            @Html.DisplayName("FECHA REGISTRO")
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.NOM_SUCURSAL, "Edit", new { id = item.ID_SUCURSAL })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PAIS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESTADO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CALLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NUMERO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COLONIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESTATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_REGISTRO_SUCURSAL)
+        </td>
+    </tr>
+}
+
+</table>

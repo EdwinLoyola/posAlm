@@ -1,0 +1,50 @@
+﻿@model IEnumerable<PuntoDeVentaAlm.Models.TBL_STOCK>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>STOCK DE MERCANCIA</h2>
+
+<p>
+    @Html.ActionLink("NUEVA ENTRADA ", "Create")||
+    @Html.ActionLink(" NUEVA SALIDA", "BajaStock") ||
+    @Html.ActionLink("INVENTARIO","redirectInventario")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_PRODUCTOS.DESCRIPCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STOCK)
+        </th>
+
+        <th>
+            @Html.DisplayName("ULTIMA ACTUALIZACIÓN")
+        </th>
+        <th>
+            @Html.DisplayName("ALMACÉN")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.TBL_PRODUCTOS.DESCRIPCION, "Details", new { id = item.ID_STOCK })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STOCK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ULTIMA_FECHA_ACTUALIZACION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBL_ALMACENES.NOM_ALMACEN)
+        </td>
+    </tr>
+}
+
+</table>

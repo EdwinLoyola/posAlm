@@ -1,0 +1,1313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ALMENDRITAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ID_SUCURSAL" Type="int" Nullable="false" />
+          <Property Name="ID_ALMACEN" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ALMACENES">
+          <Key>
+            <PropertyRef Name="ID_ALMACEN" />
+          </Key>
+          <Property Name="ID_ALMACEN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM_ALMACEN" Type="varchar" MaxLength="25" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="25" />
+          <Property Name="CALLE" Type="varchar" MaxLength="50" />
+          <Property Name="NUMERO" Type="smallint" />
+          <Property Name="COLONIA" Type="varchar" MaxLength="50" />
+          <Property Name="CP" Type="varchar" MaxLength="5" />
+          <Property Name="ESTATUS" Type="bit" />
+          <Property Name="FECHA_REGISTRO_ALMACEN" Type="date" />
+          <Property Name="ID_USER_ASP" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_CATALOGO_LOG">
+          <Key>
+            <PropertyRef Name="ID_CAT_LOG" />
+          </Key>
+          <Property Name="ID_CAT_LOG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TBL_CLIENTES">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RAZON_SOCIAL" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RFC" Type="varchar" MaxLength="13" />
+          <Property Name="FECHA_ALTA" Type="date" />
+          <Property Name="LIMITE_CREDITO" Type="real" />
+          <Property Name="DIAS_CREDITO" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="TBL_DETALLE_LOTE">
+          <Key>
+            <PropertyRef Name="ID_DETALLE" />
+          </Key>
+          <Property Name="ID_DETALLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CANTIDAD" Type="real" />
+          <Property Name="VEDIDOS" Type="real" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="DISPONIBLE" Type="bit" />
+          <Property Name="ID_USER_ASP" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="ID_LOTE" Type="varchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DETALLES_INVENT">
+          <Key>
+            <PropertyRef Name="ID_DET_INV" />
+          </Key>
+          <Property Name="ID_DET_INV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CANTIDAD" Type="real" />
+          <Property Name="ID_INVENTARIO" Type="int" Nullable="false" />
+          <Property Name="ID_PRODUC" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ID_USER_ASP" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="FECHA_REGISTRO_INV" Type="date" />
+        </EntityType>
+        <EntityType Name="TBL_DIRECCIONES">
+          <Key>
+            <PropertyRef Name="ID_DIRECCION" />
+          </Key>
+          <Property Name="ID_DIRECCION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CALLE" Type="varchar" MaxLength="50" />
+          <Property Name="NUMERO" Type="varchar" MaxLength="25" />
+          <Property Name="COLONIA" Type="varchar" MaxLength="50" />
+          <Property Name="MUNICIPIO" Type="varchar" MaxLength="35" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="25" />
+          <Property Name="PAIS" Type="varchar" MaxLength="20" />
+          <Property Name="CP" Type="varchar" MaxLength="5" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="50" />
+          <Property Name="CORREO" Type="varchar" MaxLength="30" />
+          <Property Name="ID_CLIENTE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_INVENTARIOS">
+          <Key>
+            <PropertyRef Name="ID_INVENTARIO" />
+          </Key>
+          <Property Name="ID_INVENTARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="OBSERVACIONES" Type="varchar" MaxLength="200" />
+          <Property Name="ESTATUS" Type="bit" />
+          <Property Name="ID_USER_ASP" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="ID_ALMACEN" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_LOG">
+          <Key>
+            <PropertyRef Name="ID_LOG" />
+          </Key>
+          <Property Name="ID_LOG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_USU" Type="int" Nullable="false" />
+          <Property Name="ID_CAT_LOG" Type="int" Nullable="false" />
+          <Property Name="FECHA_LOG" Type="date" />
+          <Property Name="DETALLE" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TBL_LOG_ERROR">
+          <Key>
+            <PropertyRef Name="ID_ERROR" />
+          </Key>
+          <Property Name="ID_ERROR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="30" />
+          <Property Name="FECHA_ERROR" Type="date" />
+          <Property Name="ERROR_EXCEPTION" Type="varchar" MaxLength="50" />
+          <Property Name="ID_USU" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_LOTE_PRODUCCION">
+          <Key>
+            <PropertyRef Name="ID_LOTE" />
+          </Key>
+          <Property Name="ID_LOTE" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="COSTO_PRODUCCION" Type="real" />
+          <Property Name="FECHA_PRODUC" Type="date" />
+          <Property Name="FECHA_REGISTRO" Type="date" />
+          <Property Name="ID_PRODUC" Type="varchar" MaxLength="10" />
+          <Property Name="ABIERTO" Type="bit" />
+          <Property Name="ID_USER_ASP" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="CANCELADO" Type="bit" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TBL_PRESENTACIONES_PRODUCT">
+          <Key>
+            <PropertyRef Name="ID_PRESENCTACION" />
+          </Key>
+          <Property Name="ID_PRESENCTACION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="UNIDADES" Type="real" />
+          <Property Name="ID_PRODUCTO" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PRODUCTOS">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTO" />
+          </Key>
+          <Property Name="ID_PRODUCTO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="30" />
+          <Property Name="PRECIO" Type="real" />
+          <Property Name="IVA" Type="real" />
+          <Property Name="IEPS" Type="real" />
+          <Property Name="U_MEDIDA" Type="varchar" MaxLength="10" />
+          <Property Name="CLAVE_SAT" Type="varchar" MaxLength="10" />
+          <Property Name="FECHA_ALTA" Type="date" />
+          <Property Name="ESTATUS" Type="bit" />
+          <Property Name="ULTIM_PRECIO_COMPRA" Type="real" />
+          <Property Name="ID_USER_ASP" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="PRODUCTO_PROPIO" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBL_SOCIEDADES">
+          <Key>
+            <PropertyRef Name="ID_SOCIEDAD" />
+          </Key>
+          <Property Name="ID_SOCIEDAD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM_SOCIEDAD" Type="varchar" MaxLength="50" />
+          <Property Name="RFC" Type="varchar" MaxLength="13" />
+          <Property Name="PAIS" Type="varchar" MaxLength="20" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="25" />
+          <Property Name="CALLE" Type="varchar" MaxLength="50" />
+          <Property Name="NUMERO" Type="smallint" />
+          <Property Name="COLONIA" Type="varchar" MaxLength="50" />
+          <Property Name="CP" Type="varchar" MaxLength="5" />
+          <Property Name="ESTATUS" Type="bit" />
+          <Property Name="FECHA_REGISTRO_SOCIEDAD" Type="date" />
+          <Property Name="ID_USER_ASP" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_STOCK">
+          <Key>
+            <PropertyRef Name="ID_STOCK" />
+          </Key>
+          <Property Name="ID_STOCK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STOCK" Type="real" />
+          <Property Name="PEDIDO" Type="real" />
+          <Property Name="COMPROMETIDO" Type="real" />
+          <Property Name="ID_PRODUC" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ID_ALMAC" Type="int" Nullable="false" />
+          <Property Name="ULTIMA_FECHA_ACTUALIZACION" Type="date" />
+        </EntityType>
+        <EntityType Name="TBL_SUCURSALES">
+          <Key>
+            <PropertyRef Name="ID_SUCURSAL" />
+          </Key>
+          <Property Name="ID_SUCURSAL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM_SUCURSAL" Type="varchar" MaxLength="50" />
+          <Property Name="PAIS" Type="varchar" MaxLength="20" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="25" />
+          <Property Name="CALLE" Type="varchar" MaxLength="50" />
+          <Property Name="NUMERO" Type="smallint" />
+          <Property Name="COLONIA" Type="varchar" MaxLength="50" />
+          <Property Name="CP" Type="varchar" MaxLength="5" />
+          <Property Name="ESTATUS" Type="bit" />
+          <Property Name="FECHA_REGISTRO_SUCURSAL" Type="date" />
+          <Property Name="ID_USER_ASP" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_ALMAC">
+          <End Role="TBL_ALMACENES" Type="Self.TBL_ALMACENES" Multiplicity="1" />
+          <End Role="TBL_STOCK" Type="Self.TBL_STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ALMACENES">
+              <PropertyRef Name="ID_ALMACEN" />
+            </Principal>
+            <Dependent Role="TBL_STOCK">
+              <PropertyRef Name="ID_ALMAC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DET_INVENTARIO">
+          <End Role="TBL_INVENTARIOS" Type="Self.TBL_INVENTARIOS" Multiplicity="1" />
+          <End Role="TBL_DETALLES_INVENT" Type="Self.TBL_DETALLES_INVENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_INVENTARIOS">
+              <PropertyRef Name="ID_INVENTARIO" />
+            </Principal>
+            <Dependent Role="TBL_DETALLES_INVENT">
+              <PropertyRef Name="ID_INVENTARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_ALMAC">
+          <End Role="TBL_ALMACENES" Type="Self.TBL_ALMACENES" Multiplicity="1" />
+          <End Role="TBL_INVENTARIOS" Type="Self.TBL_INVENTARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ALMACENES">
+              <PropertyRef Name="ID_ALMACEN" />
+            </Principal>
+            <Dependent Role="TBL_INVENTARIOS">
+              <PropertyRef Name="ID_ALMACEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_CLIE_DIR">
+          <End Role="TBL_CLIENTES" Type="Self.TBL_CLIENTES" Multiplicity="1" />
+          <End Role="TBL_DIRECCIONES" Type="Self.TBL_DIRECCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CLIENTES">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="TBL_DIRECCIONES">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_PRODUC_INVENT">
+          <End Role="TBL_PRODUCTOS" Type="Self.TBL_PRODUCTOS" Multiplicity="1" />
+          <End Role="TBL_DETALLES_INVENT" Type="Self.TBL_DETALLES_INVENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PRODUCTOS">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="TBL_DETALLES_INVENT">
+              <PropertyRef Name="ID_PRODUC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_PRODUCTO_PRES">
+          <End Role="TBL_PRODUCTOS" Type="Self.TBL_PRODUCTOS" Multiplicity="1" />
+          <End Role="TBL_PRESENTACIONES_PRODUCT" Type="Self.TBL_PRESENTACIONES_PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PRODUCTOS">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="TBL_PRESENTACIONES_PRODUCT">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_CAT">
+          <End Role="TBL_CATALOGO_LOG" Type="Self.TBL_CATALOGO_LOG" Multiplicity="1" />
+          <End Role="TBL_LOG" Type="Self.TBL_LOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CATALOGO_LOG">
+              <PropertyRef Name="ID_CAT_LOG" />
+            </Principal>
+            <Dependent Role="TBL_LOG">
+              <PropertyRef Name="ID_CAT_LOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOTE">
+          <End Role="TBL_LOTE_PRODUCCION" Type="Self.TBL_LOTE_PRODUCCION" Multiplicity="1" />
+          <End Role="TBL_DETALLE_LOTE" Type="Self.TBL_DETALLE_LOTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_LOTE_PRODUCCION">
+              <PropertyRef Name="ID_LOTE" />
+            </Principal>
+            <Dependent Role="TBL_DETALLE_LOTE">
+              <PropertyRef Name="ID_LOTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUC">
+          <End Role="TBL_PRODUCTOS" Type="Self.TBL_PRODUCTOS" Multiplicity="1" />
+          <End Role="TBL_STOCK" Type="Self.TBL_STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PRODUCTOS">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="TBL_STOCK">
+              <PropertyRef Name="ID_PRODUC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUC_LOTE">
+          <End Role="TBL_PRODUCTOS" Type="Self.TBL_PRODUCTOS" Multiplicity="0..1" />
+          <End Role="TBL_LOTE_PRODUCCION" Type="Self.TBL_LOTE_PRODUCCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PRODUCTOS">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="TBL_LOTE_PRODUCCION">
+              <PropertyRef Name="ID_PRODUC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ALMENDRITAModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_ALMACENES" EntityType="Self.TBL_ALMACENES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_CATALOGO_LOG" EntityType="Self.TBL_CATALOGO_LOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_CLIENTES" EntityType="Self.TBL_CLIENTES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DETALLE_LOTE" EntityType="Self.TBL_DETALLE_LOTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DETALLES_INVENT" EntityType="Self.TBL_DETALLES_INVENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DIRECCIONES" EntityType="Self.TBL_DIRECCIONES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_INVENTARIOS" EntityType="Self.TBL_INVENTARIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_LOG" EntityType="Self.TBL_LOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_LOG_ERROR" EntityType="Self.TBL_LOG_ERROR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_LOTE_PRODUCCION" EntityType="Self.TBL_LOTE_PRODUCCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PRESENTACIONES_PRODUCT" EntityType="Self.TBL_PRESENTACIONES_PRODUCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PRODUCTOS" EntityType="Self.TBL_PRODUCTOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_SOCIEDADES" EntityType="Self.TBL_SOCIEDADES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_STOCK" EntityType="Self.TBL_STOCK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_SUCURSALES" EntityType="Self.TBL_SUCURSALES" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ALMAC" Association="Self.FK_ALMAC">
+            <End Role="TBL_ALMACENES" EntitySet="TBL_ALMACENES" />
+            <End Role="TBL_STOCK" EntitySet="TBL_STOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DET_INVENTARIO" Association="Self.FK_DET_INVENTARIO">
+            <End Role="TBL_INVENTARIOS" EntitySet="TBL_INVENTARIOS" />
+            <End Role="TBL_DETALLES_INVENT" EntitySet="TBL_DETALLES_INVENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_ALMAC" Association="Self.FK_ID_ALMAC">
+            <End Role="TBL_ALMACENES" EntitySet="TBL_ALMACENES" />
+            <End Role="TBL_INVENTARIOS" EntitySet="TBL_INVENTARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_CLIE_DIR" Association="Self.FK_ID_CLIE_DIR">
+            <End Role="TBL_CLIENTES" EntitySet="TBL_CLIENTES" />
+            <End Role="TBL_DIRECCIONES" EntitySet="TBL_DIRECCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_PRODUC_INVENT" Association="Self.FK_ID_PRODUC_INVENT">
+            <End Role="TBL_PRODUCTOS" EntitySet="TBL_PRODUCTOS" />
+            <End Role="TBL_DETALLES_INVENT" EntitySet="TBL_DETALLES_INVENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_PRODUCTO_PRES" Association="Self.FK_ID_PRODUCTO_PRES">
+            <End Role="TBL_PRODUCTOS" EntitySet="TBL_PRODUCTOS" />
+            <End Role="TBL_PRESENTACIONES_PRODUCT" EntitySet="TBL_PRESENTACIONES_PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_CAT" Association="Self.FK_LOG_CAT">
+            <End Role="TBL_CATALOGO_LOG" EntitySet="TBL_CATALOGO_LOG" />
+            <End Role="TBL_LOG" EntitySet="TBL_LOG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOTE" Association="Self.FK_LOTE">
+            <End Role="TBL_LOTE_PRODUCCION" EntitySet="TBL_LOTE_PRODUCCION" />
+            <End Role="TBL_DETALLE_LOTE" EntitySet="TBL_DETALLE_LOTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUC" Association="Self.FK_PRODUC">
+            <End Role="TBL_PRODUCTOS" EntitySet="TBL_PRODUCTOS" />
+            <End Role="TBL_STOCK" EntitySet="TBL_STOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUC_LOTE" Association="Self.FK_PRODUC_LOTE">
+            <End Role="TBL_PRODUCTOS" EntitySet="TBL_PRODUCTOS" />
+            <End Role="TBL_LOTE_PRODUCCION" EntitySet="TBL_LOTE_PRODUCCION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ALMENDRITAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBL_CATALOGO_LOG">
+          <Key>
+            <PropertyRef Name="ID_CAT_LOG" />
+          </Key>
+          <Property Name="ID_CAT_LOG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_LOG" Relationship="Self.FK_LOG_CAT" FromRole="TBL_CATALOGO_LOG" ToRole="TBL_LOG" />
+        </EntityType>
+        <EntityType Name="TBL_DETALLES_INVENT">
+          <Key>
+            <PropertyRef Name="ID_DET_INV" />
+          </Key>
+          <Property Name="ID_DET_INV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CANTIDAD" Type="Single" />
+          <Property Name="ID_INVENTARIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_PRODUC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_REGISTRO_INV" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TBL_INVENTARIOS" Relationship="Self.FK_DET_INVENTARIO" FromRole="TBL_DETALLES_INVENT" ToRole="TBL_INVENTARIOS" />
+          <Property Name="ID_USER_ASP" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_PRODUCTOS" Relationship="ALMENDRITAModel.FK_ID_PRODUC_INVENT" FromRole="TBL_DETALLES_INVENT" ToRole="TBL_PRODUCTOS" />
+        </EntityType>
+        <EntityType Name="TBL_INVENTARIOS">
+          <Key>
+            <PropertyRef Name="ID_INVENTARIO" />
+          </Key>
+          <Property Name="ID_INVENTARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="OBSERVACIONES" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ESTATUS" Type="Boolean" />
+          <Property Name="ID_ALMACEN" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_DETALLES_INVENT" Relationship="Self.FK_DET_INVENTARIO" FromRole="TBL_INVENTARIOS" ToRole="TBL_DETALLES_INVENT" />
+          <Property Name="ID_USER_ASP" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_ALMACENES" Relationship="ALMENDRITAModel.FK_ID_ALMAC" FromRole="TBL_INVENTARIOS" ToRole="TBL_ALMACENES" />
+        </EntityType>
+        <EntityType Name="TBL_LOG">
+          <Key>
+            <PropertyRef Name="ID_LOG" />
+          </Key>
+          <Property Name="ID_LOG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_USU" Type="Int32" Nullable="false" />
+          <Property Name="ID_CAT_LOG" Type="Int32" Nullable="false" />
+          <Property Name="FECHA_LOG" Type="DateTime" Precision="0" />
+          <Property Name="DETALLE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_CATALOGO_LOG" Relationship="Self.FK_LOG_CAT" FromRole="TBL_LOG" ToRole="TBL_CATALOGO_LOG" />
+        </EntityType>
+        <EntityType Name="TBL_LOG_ERROR">
+          <Key>
+            <PropertyRef Name="ID_ERROR" />
+          </Key>
+          <Property Name="ID_ERROR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_ERROR" Type="DateTime" Precision="0" />
+          <Property Name="ERROR_EXCEPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_USU" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PRODUCTOS">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTO" />
+          </Key>
+          <Property Name="ID_PRODUCTO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO" Type="Single" />
+          <Property Name="IVA" Type="Single" />
+          <Property Name="IEPS" Type="Single" />
+          <Property Name="U_MEDIDA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CLAVE_SAT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_ALTA" Type="DateTime" Precision="0" />
+          <Property Name="ESTATUS" Type="Boolean" />
+          <Property Name="ULTIM_PRECIO_COMPRA" Type="Single" />
+          <NavigationProperty Name="TBL_STOCK" Relationship="Self.FK_PRODUC" FromRole="TBL_PRODUCTOS" ToRole="TBL_STOCK" />
+          <Property Name="PRODUCTO_PROPIO" Type="Boolean" />
+          <NavigationProperty Name="TBL_LOTE_PRODUCCION" Relationship="ALMENDRITAModel.FK_PRODUC_LOTE" FromRole="TBL_PRODUCTOS" ToRole="TBL_LOTE_PRODUCCION" />
+          <NavigationProperty Name="TBL_PRESENTACIONES_PRODUCT" Relationship="ALMENDRITAModel.FK_ID_PRODUCTO_PRES" FromRole="TBL_PRODUCTOS" ToRole="TBL_PRESENTACIONES_PRODUCT" />
+          <NavigationProperty Name="TBL_DETALLES_INVENT" Relationship="ALMENDRITAModel.FK_ID_PRODUC_INVENT" FromRole="TBL_PRODUCTOS" ToRole="TBL_DETALLES_INVENT" />
+          <Property Name="ID_USER_ASP" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_STOCK">
+          <Key>
+            <PropertyRef Name="ID_STOCK" />
+          </Key>
+          <Property Name="ID_STOCK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STOCK" Type="Single" />
+          <Property Name="PEDIDO" Type="Single" />
+          <Property Name="COMPROMETIDO" Type="Single" />
+          <Property Name="ID_PRODUC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_ALMAC" Type="Int32" Nullable="false" />
+          <Property Name="ULTIMA_FECHA_ACTUALIZACION" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TBL_PRODUCTOS" Relationship="Self.FK_PRODUC" FromRole="TBL_STOCK" ToRole="TBL_PRODUCTOS" />
+          <NavigationProperty Name="TBL_ALMACENES" Relationship="ALMENDRITAModel.FK_ALMAC" FromRole="TBL_STOCK" ToRole="TBL_ALMACENES" />
+        </EntityType>
+        <Association Name="FK_LOG_CAT">
+          <End Role="TBL_CATALOGO_LOG" Type="Self.TBL_CATALOGO_LOG" Multiplicity="1" />
+          <End Role="TBL_LOG" Type="Self.TBL_LOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CATALOGO_LOG">
+              <PropertyRef Name="ID_CAT_LOG" />
+            </Principal>
+            <Dependent Role="TBL_LOG">
+              <PropertyRef Name="ID_CAT_LOG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DET_INVENTARIO">
+          <End Role="TBL_INVENTARIOS" Type="Self.TBL_INVENTARIOS" Multiplicity="1" />
+          <End Role="TBL_DETALLES_INVENT" Type="Self.TBL_DETALLES_INVENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_INVENTARIOS">
+              <PropertyRef Name="ID_INVENTARIO" />
+            </Principal>
+            <Dependent Role="TBL_DETALLES_INVENT">
+              <PropertyRef Name="ID_INVENTARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUC">
+          <End Role="TBL_PRODUCTOS" Type="Self.TBL_PRODUCTOS" Multiplicity="1" />
+          <End Role="TBL_STOCK" Type="Self.TBL_STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PRODUCTOS">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="TBL_STOCK">
+              <PropertyRef Name="ID_PRODUC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ALMENDRITAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_CATALOGO_LOG" EntityType="Self.TBL_CATALOGO_LOG" />
+          <EntitySet Name="TBL_DETALLES_INVENT" EntityType="Self.TBL_DETALLES_INVENT" />
+          <EntitySet Name="TBL_INVENTARIOS" EntityType="Self.TBL_INVENTARIOS" />
+          <EntitySet Name="TBL_LOG" EntityType="Self.TBL_LOG" />
+          <EntitySet Name="TBL_LOG_ERROR" EntityType="Self.TBL_LOG_ERROR" />
+          <EntitySet Name="TBL_PRODUCTOS" EntityType="Self.TBL_PRODUCTOS" />
+          <EntitySet Name="TBL_STOCK" EntityType="Self.TBL_STOCK" />
+          <AssociationSet Name="FK_LOG_CAT" Association="Self.FK_LOG_CAT">
+            <End Role="TBL_CATALOGO_LOG" EntitySet="TBL_CATALOGO_LOG" />
+            <End Role="TBL_LOG" EntitySet="TBL_LOG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DET_INVENTARIO" Association="Self.FK_DET_INVENTARIO">
+            <End Role="TBL_INVENTARIOS" EntitySet="TBL_INVENTARIOS" />
+            <End Role="TBL_DETALLES_INVENT" EntitySet="TBL_DETALLES_INVENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUC" Association="Self.FK_PRODUC">
+            <End Role="TBL_PRODUCTOS" EntitySet="TBL_PRODUCTOS" />
+            <End Role="TBL_STOCK" EntitySet="TBL_STOCK" />
+          </AssociationSet>
+          <EntitySet Name="C__MigrationHistory" EntityType="ALMENDRITAModel.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="ALMENDRITAModel.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="ALMENDRITAModel.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="ALMENDRITAModel.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="ALMENDRITAModel.AspNetUsers" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="ALMENDRITAModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="ALMENDRITAModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="ALMENDRITAModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="TBL_LOTE_PRODUCCION" EntityType="ALMENDRITAModel.TBL_LOTE_PRODUCCION" />
+          <AssociationSet Name="FK_PRODUC_LOTE" Association="ALMENDRITAModel.FK_PRODUC_LOTE">
+            <End Role="TBL_PRODUCTOS" EntitySet="TBL_PRODUCTOS" />
+            <End Role="TBL_LOTE_PRODUCCION" EntitySet="TBL_LOTE_PRODUCCION" />
+          </AssociationSet>
+          <EntitySet Name="TBL_DETALLE_LOTE" EntityType="ALMENDRITAModel.TBL_DETALLE_LOTE" />
+          <AssociationSet Name="FK_LOTE" Association="ALMENDRITAModel.FK_LOTE">
+            <End Role="TBL_LOTE_PRODUCCION" EntitySet="TBL_LOTE_PRODUCCION" />
+            <End Role="TBL_DETALLE_LOTE" EntitySet="TBL_DETALLE_LOTE" />
+          </AssociationSet>
+          <EntitySet Name="TBL_PRESENTACIONES_PRODUCT" EntityType="ALMENDRITAModel.TBL_PRESENTACIONES_PRODUCT" />
+          <AssociationSet Name="FK_ID_PRODUCTO_PRES" Association="ALMENDRITAModel.FK_ID_PRODUCTO_PRES">
+            <End Role="TBL_PRODUCTOS" EntitySet="TBL_PRODUCTOS" />
+            <End Role="TBL_PRESENTACIONES_PRODUCT" EntitySet="TBL_PRESENTACIONES_PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_PRODUC_INVENT" Association="ALMENDRITAModel.FK_ID_PRODUC_INVENT">
+            <End Role="TBL_PRODUCTOS" EntitySet="TBL_PRODUCTOS" />
+            <End Role="TBL_DETALLES_INVENT" EntitySet="TBL_DETALLES_INVENT" />
+          </AssociationSet>
+          <EntitySet Name="TBL_CLIENTES" EntityType="ALMENDRITAModel.TBL_CLIENTES" />
+          <EntitySet Name="TBL_ALMACENES" EntityType="ALMENDRITAModel.TBL_ALMACENES" />
+          <EntitySet Name="TBL_DIRECCIONES" EntityType="ALMENDRITAModel.TBL_DIRECCIONES" />
+          <EntitySet Name="TBL_SOCIEDADES" EntityType="ALMENDRITAModel.TBL_SOCIEDADES" />
+          <EntitySet Name="TBL_SUCURSALES" EntityType="ALMENDRITAModel.TBL_SUCURSALES" />
+          <AssociationSet Name="FK_ALMAC" Association="ALMENDRITAModel.FK_ALMAC">
+            <End Role="TBL_ALMACENES" EntitySet="TBL_ALMACENES" />
+            <End Role="TBL_STOCK" EntitySet="TBL_STOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_ALMAC" Association="ALMENDRITAModel.FK_ID_ALMAC">
+            <End Role="TBL_ALMACENES" EntitySet="TBL_ALMACENES" />
+            <End Role="TBL_INVENTARIOS" EntitySet="TBL_INVENTARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_CLIE_DIR" Association="ALMENDRITAModel.FK_ID_CLIE_DIR">
+            <End Role="TBL_CLIENTES" EntitySet="TBL_CLIENTES" />
+            <End Role="TBL_DIRECCIONES" EntitySet="TBL_DIRECCIONES" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="ALMENDRITAModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="ALMENDRITAModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="ALMENDRITAModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="ALMENDRITAModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="ALMENDRITAModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="ALMENDRITAModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <Property Name="ID_SUCURSAL" Type="Int32" Nullable="false" />
+          <Property Name="ID_ALMACEN" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="ALMENDRITAModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ALMENDRITAModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="ALMENDRITAModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ALMENDRITAModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="ALMENDRITAModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="ALMENDRITAModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityType Name="TBL_LOTE_PRODUCCION">
+          <Key>
+            <PropertyRef Name="ID_LOTE" />
+          </Key>
+          <Property Name="ID_LOTE" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="COSTO_PRODUCCION" Type="Single" />
+          <Property Name="FECHA_PRODUC" Type="DateTime" Precision="0" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="0" />
+          <Property Name="ID_PRODUC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ABIERTO" Type="Boolean" />
+          <NavigationProperty Name="TBL_PRODUCTOS" Relationship="ALMENDRITAModel.FK_PRODUC_LOTE" FromRole="TBL_LOTE_PRODUCCION" ToRole="TBL_PRODUCTOS" />
+          <NavigationProperty Name="TBL_DETALLE_LOTE" Relationship="ALMENDRITAModel.FK_LOTE" FromRole="TBL_LOTE_PRODUCCION" ToRole="TBL_DETALLE_LOTE" />
+          <Property Name="ID_USER_ASP" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CANCELADO" Type="Boolean" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_PRODUC_LOTE">
+          <End Type="ALMENDRITAModel.TBL_PRODUCTOS" Role="TBL_PRODUCTOS" Multiplicity="0..1" />
+          <End Type="ALMENDRITAModel.TBL_LOTE_PRODUCCION" Role="TBL_LOTE_PRODUCCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PRODUCTOS">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="TBL_LOTE_PRODUCCION">
+              <PropertyRef Name="ID_PRODUC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TBL_DETALLE_LOTE">
+          <Key>
+            <PropertyRef Name="ID_DETALLE" />
+          </Key>
+          <Property Name="ID_DETALLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CANTIDAD" Type="Single" />
+          <Property Name="VEDIDOS" Type="Single" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="0" />
+          <Property Name="DISPONIBLE" Type="Boolean" />
+          <Property Name="ID_LOTE" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_LOTE_PRODUCCION" Relationship="ALMENDRITAModel.FK_LOTE" FromRole="TBL_DETALLE_LOTE" ToRole="TBL_LOTE_PRODUCCION" />
+          <Property Name="ID_USER_ASP" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_LOTE">
+          <End Type="ALMENDRITAModel.TBL_LOTE_PRODUCCION" Role="TBL_LOTE_PRODUCCION" Multiplicity="1" />
+          <End Type="ALMENDRITAModel.TBL_DETALLE_LOTE" Role="TBL_DETALLE_LOTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_LOTE_PRODUCCION">
+              <PropertyRef Name="ID_LOTE" />
+            </Principal>
+            <Dependent Role="TBL_DETALLE_LOTE">
+              <PropertyRef Name="ID_LOTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TBL_PRESENTACIONES_PRODUCT">
+          <Key>
+            <PropertyRef Name="ID_PRESENCTACION" />
+          </Key>
+          <Property Name="ID_PRESENCTACION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="UNIDADES" Type="Single" />
+          <Property Name="ID_PRODUCTO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_PRODUCTOS" Relationship="ALMENDRITAModel.FK_ID_PRODUCTO_PRES" FromRole="TBL_PRESENTACIONES_PRODUCT" ToRole="TBL_PRODUCTOS" />
+        </EntityType>
+        <Association Name="FK_ID_PRODUCTO_PRES">
+          <End Type="ALMENDRITAModel.TBL_PRODUCTOS" Role="TBL_PRODUCTOS" Multiplicity="1" />
+          <End Type="ALMENDRITAModel.TBL_PRESENTACIONES_PRODUCT" Role="TBL_PRESENTACIONES_PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PRODUCTOS">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="TBL_PRESENTACIONES_PRODUCT">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_PRODUC_INVENT">
+          <End Type="ALMENDRITAModel.TBL_PRODUCTOS" Role="TBL_PRODUCTOS" Multiplicity="1" />
+          <End Type="ALMENDRITAModel.TBL_DETALLES_INVENT" Role="TBL_DETALLES_INVENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_PRODUCTOS">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="TBL_DETALLES_INVENT">
+              <PropertyRef Name="ID_PRODUC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TBL_CLIENTES">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RAZON_SOCIAL" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RFC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_ALTA" Type="DateTime" Precision="0" />
+          <Property Name="LIMITE_CREDITO" Type="Single" />
+          <Property Name="DIAS_CREDITO" Type="Byte" />
+          <NavigationProperty Name="TBL_DIRECCIONES" Relationship="ALMENDRITAModel.FK_ID_CLIE_DIR" FromRole="TBL_CLIENTES" ToRole="TBL_DIRECCIONES" />
+        </EntityType>
+        <EntityType Name="TBL_ALMACENES">
+          <Key>
+            <PropertyRef Name="ID_ALMACEN" />
+          </Key>
+          <Property Name="ID_ALMACEN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM_ALMACEN" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CALLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NUMERO" Type="Int16" />
+          <Property Name="COLONIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CP" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ESTATUS" Type="Boolean" />
+          <Property Name="FECHA_REGISTRO_ALMACEN" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TBL_STOCK" Relationship="ALMENDRITAModel.FK_ALMAC" FromRole="TBL_ALMACENES" ToRole="TBL_STOCK" />
+          <NavigationProperty Name="TBL_INVENTARIOS" Relationship="ALMENDRITAModel.FK_ID_ALMAC" FromRole="TBL_ALMACENES" ToRole="TBL_INVENTARIOS" />
+          <Property Name="ID_USER_ASP" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_DIRECCIONES">
+          <Key>
+            <PropertyRef Name="ID_DIRECCION" />
+          </Key>
+          <Property Name="ID_DIRECCION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CALLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NUMERO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="COLONIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MUNICIPIO" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PAIS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CP" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CORREO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_CLIENTES" Relationship="ALMENDRITAModel.FK_ID_CLIE_DIR" FromRole="TBL_DIRECCIONES" ToRole="TBL_CLIENTES" />
+        </EntityType>
+        <EntityType Name="TBL_SOCIEDADES">
+          <Key>
+            <PropertyRef Name="ID_SOCIEDAD" />
+          </Key>
+          <Property Name="ID_SOCIEDAD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM_SOCIEDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RFC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="PAIS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CALLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NUMERO" Type="Int16" />
+          <Property Name="COLONIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CP" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ESTATUS" Type="Boolean" />
+          <Property Name="FECHA_REGISTRO_SOCIEDAD" Type="DateTime" Precision="0" />
+          <Property Name="ID_USER_ASP" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_SUCURSALES">
+          <Key>
+            <PropertyRef Name="ID_SUCURSAL" />
+          </Key>
+          <Property Name="ID_SUCURSAL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM_SUCURSAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PAIS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CALLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NUMERO" Type="Int16" />
+          <Property Name="COLONIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CP" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ESTATUS" Type="Boolean" />
+          <Property Name="FECHA_REGISTRO_SUCURSAL" Type="DateTime" Precision="0" />
+          <Property Name="ID_USER_ASP" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_ALMAC">
+          <End Type="ALMENDRITAModel.TBL_ALMACENES" Role="TBL_ALMACENES" Multiplicity="1" />
+          <End Type="ALMENDRITAModel.TBL_STOCK" Role="TBL_STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ALMACENES">
+              <PropertyRef Name="ID_ALMACEN" />
+            </Principal>
+            <Dependent Role="TBL_STOCK">
+              <PropertyRef Name="ID_ALMAC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_ALMAC">
+          <End Type="ALMENDRITAModel.TBL_ALMACENES" Role="TBL_ALMACENES" Multiplicity="1" />
+          <End Type="ALMENDRITAModel.TBL_INVENTARIOS" Role="TBL_INVENTARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ALMACENES">
+              <PropertyRef Name="ID_ALMACEN" />
+            </Principal>
+            <Dependent Role="TBL_INVENTARIOS">
+              <PropertyRef Name="ID_ALMACEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_CLIE_DIR">
+          <End Type="ALMENDRITAModel.TBL_CLIENTES" Role="TBL_CLIENTES" Multiplicity="1" />
+          <End Type="ALMENDRITAModel.TBL_DIRECCIONES" Role="TBL_DIRECCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CLIENTES">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="TBL_DIRECCIONES">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ALMENDRITAModelStoreContainer" CdmEntityContainer="ALMENDRITAEntities">
+          <EntitySetMapping Name="TBL_CATALOGO_LOG">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_CATALOGO_LOG">
+              <MappingFragment StoreEntitySet="TBL_CATALOGO_LOG">
+                <ScalarProperty Name="ID_CAT_LOG" ColumnName="ID_CAT_LOG" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DETALLES_INVENT">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_DETALLES_INVENT">
+              <MappingFragment StoreEntitySet="TBL_DETALLES_INVENT">
+                <ScalarProperty Name="ID_USER_ASP" ColumnName="ID_USER_ASP" />
+                <ScalarProperty Name="ID_DET_INV" ColumnName="ID_DET_INV" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="ID_INVENTARIO" ColumnName="ID_INVENTARIO" />
+                <ScalarProperty Name="ID_PRODUC" ColumnName="ID_PRODUC" />
+                <ScalarProperty Name="FECHA_REGISTRO_INV" ColumnName="FECHA_REGISTRO_INV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_INVENTARIOS">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_INVENTARIOS">
+              <MappingFragment StoreEntitySet="TBL_INVENTARIOS">
+                <ScalarProperty Name="ID_USER_ASP" ColumnName="ID_USER_ASP" />
+                <ScalarProperty Name="ID_INVENTARIO" ColumnName="ID_INVENTARIO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="ID_ALMACEN" ColumnName="ID_ALMACEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_LOG">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_LOG">
+              <MappingFragment StoreEntitySet="TBL_LOG">
+                <ScalarProperty Name="ID_LOG" ColumnName="ID_LOG" />
+                <ScalarProperty Name="ID_USU" ColumnName="ID_USU" />
+                <ScalarProperty Name="ID_CAT_LOG" ColumnName="ID_CAT_LOG" />
+                <ScalarProperty Name="FECHA_LOG" ColumnName="FECHA_LOG" />
+                <ScalarProperty Name="DETALLE" ColumnName="DETALLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_LOG_ERROR">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_LOG_ERROR">
+              <MappingFragment StoreEntitySet="TBL_LOG_ERROR">
+                <ScalarProperty Name="ID_ERROR" ColumnName="ID_ERROR" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FECHA_ERROR" ColumnName="FECHA_ERROR" />
+                <ScalarProperty Name="ERROR_EXCEPTION" ColumnName="ERROR_EXCEPTION" />
+                <ScalarProperty Name="ID_USU" ColumnName="ID_USU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PRODUCTOS">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_PRODUCTOS">
+              <MappingFragment StoreEntitySet="TBL_PRODUCTOS">
+                <ScalarProperty Name="ID_USER_ASP" ColumnName="ID_USER_ASP" />
+                <ScalarProperty Name="PRODUCTO_PROPIO" ColumnName="PRODUCTO_PROPIO" />
+                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="IEPS" ColumnName="IEPS" />
+                <ScalarProperty Name="U_MEDIDA" ColumnName="U_MEDIDA" />
+                <ScalarProperty Name="CLAVE_SAT" ColumnName="CLAVE_SAT" />
+                <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="ULTIM_PRECIO_COMPRA" ColumnName="ULTIM_PRECIO_COMPRA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_STOCK">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_STOCK">
+              <MappingFragment StoreEntitySet="TBL_STOCK">
+                <ScalarProperty Name="ID_STOCK" ColumnName="ID_STOCK" />
+                <ScalarProperty Name="STOCK" ColumnName="STOCK" />
+                <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+                <ScalarProperty Name="COMPROMETIDO" ColumnName="COMPROMETIDO" />
+                <ScalarProperty Name="ID_PRODUC" ColumnName="ID_PRODUC" />
+                <ScalarProperty Name="ID_ALMAC" ColumnName="ID_ALMAC" />
+                <ScalarProperty Name="ULTIMA_FECHA_ACTUALIZACION" ColumnName="ULTIMA_FECHA_ACTUALIZACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="ID_ALMACEN" ColumnName="ID_ALMACEN" />
+                <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="ALMENDRITAModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="TBL_LOTE_PRODUCCION">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_LOTE_PRODUCCION">
+              <MappingFragment StoreEntitySet="TBL_LOTE_PRODUCCION">
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="CANCELADO" ColumnName="CANCELADO" />
+                <ScalarProperty Name="ID_USER_ASP" ColumnName="ID_USER_ASP" />
+                <ScalarProperty Name="ABIERTO" ColumnName="ABIERTO" />
+                <ScalarProperty Name="ID_PRODUC" ColumnName="ID_PRODUC" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="FECHA_PRODUC" ColumnName="FECHA_PRODUC" />
+                <ScalarProperty Name="COSTO_PRODUCCION" ColumnName="COSTO_PRODUCCION" />
+                <ScalarProperty Name="ID_LOTE" ColumnName="ID_LOTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DETALLE_LOTE">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_DETALLE_LOTE">
+              <MappingFragment StoreEntitySet="TBL_DETALLE_LOTE">
+                <ScalarProperty Name="ID_USER_ASP" ColumnName="ID_USER_ASP" />
+                <ScalarProperty Name="ID_LOTE" ColumnName="ID_LOTE" />
+                <ScalarProperty Name="DISPONIBLE" ColumnName="DISPONIBLE" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="VEDIDOS" ColumnName="VEDIDOS" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="ID_DETALLE" ColumnName="ID_DETALLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PRESENTACIONES_PRODUCT">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_PRESENTACIONES_PRODUCT">
+              <MappingFragment StoreEntitySet="TBL_PRESENTACIONES_PRODUCT">
+                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+                <ScalarProperty Name="UNIDADES" ColumnName="UNIDADES" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_PRESENCTACION" ColumnName="ID_PRESENCTACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_CLIENTES">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_CLIENTES">
+              <MappingFragment StoreEntitySet="TBL_CLIENTES">
+                <ScalarProperty Name="DIAS_CREDITO" ColumnName="DIAS_CREDITO" />
+                <ScalarProperty Name="LIMITE_CREDITO" ColumnName="LIMITE_CREDITO" />
+                <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ALMACENES">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_ALMACENES">
+              <MappingFragment StoreEntitySet="TBL_ALMACENES">
+                <ScalarProperty Name="ID_USER_ASP" ColumnName="ID_USER_ASP" />
+                <ScalarProperty Name="FECHA_REGISTRO_ALMACEN" ColumnName="FECHA_REGISTRO_ALMACEN" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="COLONIA" ColumnName="COLONIA" />
+                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+                <ScalarProperty Name="CALLE" ColumnName="CALLE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="NOM_ALMACEN" ColumnName="NOM_ALMACEN" />
+                <ScalarProperty Name="ID_ALMACEN" ColumnName="ID_ALMACEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DIRECCIONES">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_DIRECCIONES">
+              <MappingFragment StoreEntitySet="TBL_DIRECCIONES">
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="MUNICIPIO" ColumnName="MUNICIPIO" />
+                <ScalarProperty Name="COLONIA" ColumnName="COLONIA" />
+                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+                <ScalarProperty Name="CALLE" ColumnName="CALLE" />
+                <ScalarProperty Name="ID_DIRECCION" ColumnName="ID_DIRECCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_SOCIEDADES">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_SOCIEDADES">
+              <MappingFragment StoreEntitySet="TBL_SOCIEDADES">
+                <ScalarProperty Name="ID_USER_ASP" ColumnName="ID_USER_ASP" />
+                <ScalarProperty Name="FECHA_REGISTRO_SOCIEDAD" ColumnName="FECHA_REGISTRO_SOCIEDAD" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="COLONIA" ColumnName="COLONIA" />
+                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+                <ScalarProperty Name="CALLE" ColumnName="CALLE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="NOM_SOCIEDAD" ColumnName="NOM_SOCIEDAD" />
+                <ScalarProperty Name="ID_SOCIEDAD" ColumnName="ID_SOCIEDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_SUCURSALES">
+            <EntityTypeMapping TypeName="ALMENDRITAModel.TBL_SUCURSALES">
+              <MappingFragment StoreEntitySet="TBL_SUCURSALES">
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="ID_USER_ASP" ColumnName="ID_USER_ASP" />
+                <ScalarProperty Name="FECHA_REGISTRO_SUCURSAL" ColumnName="FECHA_REGISTRO_SUCURSAL" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="COLONIA" ColumnName="COLONIA" />
+                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+                <ScalarProperty Name="CALLE" ColumnName="CALLE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+                <ScalarProperty Name="NOM_SUCURSAL" ColumnName="NOM_SUCURSAL" />
+                <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

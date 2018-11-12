@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b5fce062099b40a1abaef69ae3c4165d" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_CATALOGO_LOG" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_DETALLES_INVENT" Width="1.5" PointX="8" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_INVENTARIOS" Width="1.5" PointX="5.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_LOG" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_LOG_ERROR" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_PRODUCTOS" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_STOCK" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="ALMENDRITAModel.FK_LOG_CAT" ManuallyRouted="false" />
+        <AssociationConnector Association="ALMENDRITAModel.FK_DET_INVENTARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="ALMENDRITAModel.FK_PRODUC" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.AspNetRoles" Width="1.5" PointX="10.75" PointY="12.5" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.AspNetUserClaims" Width="1.5" PointX="15.25" PointY="13.625" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.AspNetUserLogins" Width="1.5" PointX="15.25" PointY="11" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.AspNetUsers" Width="1.5" PointX="13" PointY="11.375" />
+        <AssociationConnector Association="ALMENDRITAModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ALMENDRITAModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ALMENDRITAModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_LOTE_PRODUCCION" Width="1.5" PointX="3" PointY="5.125" />
+        <AssociationConnector Association="ALMENDRITAModel.FK_PRODUC_LOTE" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_DETALLE_LOTE" Width="2.125" PointX="5.25" PointY="17.25" />
+        <AssociationConnector Association="ALMENDRITAModel.FK_LOTE" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_PRESENTACIONES_PRODUCT" Width="1.5" PointX="3" PointY="17.5" />
+        <AssociationConnector Association="ALMENDRITAModel.FK_ID_PRODUCTO_PRES" />
+        <AssociationConnector Association="ALMENDRITAModel.FK_ID_PRODUC_INVENT" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_CLIENTES" Width="1.5" PointX="9.375" PointY="1.5" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_ALMACENES" Width="1.5" PointX="13.875" PointY="7.125" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_DIRECCIONES" Width="1.5" PointX="13.875" PointY="1" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_SOCIEDADES" Width="1.5" PointX="5.625" PointY="0.75" />
+        <EntityTypeShape EntityType="ALMENDRITAModel.TBL_SUCURSALES" Width="1.5" PointX="10.625" PointY="4.75" />
+        <AssociationConnector Association="ALMENDRITAModel.FK_ALMAC" />
+        <AssociationConnector Association="ALMENDRITAModel.FK_ID_ALMAC" />
+        <AssociationConnector Association="ALMENDRITAModel.FK_ID_CLIE_DIR" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

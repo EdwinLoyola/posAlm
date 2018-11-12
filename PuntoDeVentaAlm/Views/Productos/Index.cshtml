@@ -1,0 +1,76 @@
+﻿@model IEnumerable<PuntoDeVentaAlm.Models.TBL_PRODUCTOS>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>PRODUCTOS</h2>
+
+<p>
+    @Html.ActionLink("NUEVO PRODUCTO", "Create") | @Html.ActionLink("REACTIVAR PRODUCTO", "Create") | BUSCAR <input type="text" id="txtBuscar" placeholder="Ingresa producto..." class="form-control">
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DESCRIPCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRECIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IVA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IEPS)
+        </th>
+        <th>
+            @Html.DisplayName("MEDIDA")
+        </th>
+        <th>
+            @Html.DisplayName("CLAVE SAT")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.DESCRIPCION, "Edit", new { id = item.ID_PRODUCTO }) 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRECIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IVA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IEPS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_MEDIDA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CLAVE_SAT)
+        </td>
+        <td>
+            | @Ajax.ActionLink("PRESENTACIONES", "listaPresentaciones", new { ID_PRODUCTO = item.ID_PRODUCTO, DESCRIPCION = item.DESCRIPCION}, 
+            new AjaxOptions()
+            {
+                HttpMethod = "POST",
+                UpdateTargetId = "presentacion"
+            })
+            | @Ajax.ActionLink("NVA PRESENTACIÓN", "nuevaPresentacion", new { ID_PRODUCTO = item.ID_PRODUCTO, DESCRIPCION = item.DESCRIPCION },
+            new AjaxOptions()
+            {
+                HttpMethod = "POST",
+                UpdateTargetId = "presentacion"
+            })
+        </td>
+    </tr>
+}
+</table>
+
+<div id="presentacion">
+
+</div>

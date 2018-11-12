@@ -1,0 +1,122 @@
+﻿@model PuntoDeVentaAlm.Models.TBL_STOCK
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>REGISTRAR ENTRADA DE MERCANCÍA</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.Label("PRODUCTO", htmlAttributes: new { @class = "control-label col-md-2"})
+            <div class="col-md-10">
+                <input type="text" name="ID_PRODUC" id="ID_PRODUC" placeholder="Ingresa producto..." class="form-control">
+                @Html.ValidationMessageFor(model => model.ID_PRODUC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("CANTIDAD", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="STOCK" id="STOCK" class="form-control" onkeypress="return controltag(event)" />
+                @Html.ValidationMessageFor(model => model.STOCK, "", new { @class = "text-danger" } )
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("ALMACEN", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID_ALMAC", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_ALMAC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Lista de Stock", "Index")
+</div>
+
+<div>
+    @Html.Raw(ViewBag.Confirma)
+</div>
+
+
+        @section scripts{
+            <script src="~/Scripts/jquery-ui.js"></script>
+
+
+            <script>
+                /*$(document).on("pagecreate", "#myPage", function () {
+                    $("#autocomplete").on("filterablebeforefilter", function (e, data) {
+                        var $ul = $("#autocomplete"),
+                            $input = $(data.input),
+                            value = $("#autocomplete-input").val(),
+                            html = "";
+                        $ul.html("");
+                        alert("Esta en la funcion");
+                        if (value && value.length > 2) {
+                            $ul.html("<li><div class='ui-loader'><span class='ui-icon ui-icon-loading'></span></div></li>");
+                            $ul.listview("refresh");
+                            alert("Esta en if");
+                            $.ajax({
+                                url: "/Stock/Buscarproducto",
+                                dateType: "jsonp",
+                                crossDomain: true,
+                                data: {
+                                    q: $("#autocomplete-input").val()
+                                }
+                            })
+                            .then(function (response) {
+                                alert("Esta en la then");
+                                $.each(response, function (i, val) {
+                                    html += "<li>" + val + "</li>";
+                                });
+                                $ul.html(html);
+                                $ul.listview("refresh");
+                                $ul.trigger("updatelayout");
+                            });
+                        }
+                    });
+                });*/
+
+                $(document).ready(function () {
+                    //FUNCION DE AUTOCOMPLETE PARA PRODUCTOS
+                    $(function () {
+                        $("#ID_PRODUC").autocomplete({
+                            source: "/Stock/Buscarproducto"
+                        });
+                    });
+                  
+                });
+
+                
+
+                //FUNCION QUE SOLO PERMITE INTRODUCIR  NUMEROS A UNA CAJA DE TEXTO
+                function controltag(e)
+                {
+                    tecla = (document.all) ? e.keyCode : e.which;
+                    if (tecla == 8) return true; // para la tecla de retroseso
+                    else if (tecla == 0 || tecla == 9) return true; //<-- PARA EL TABULADOR-> su keyCode es 9 pero en tecla se esta transformando a 0 asi que porsiacaso los dos
+                    //patron = /[0-9\s]/;// -> solo letras
+                    //patron =/[0-9\s]/;// -> solo numeros
+                    patron = /^(\d|-)?(\d|,)*\.?\d*$/
+                    te = String.fromCharCode(tecla);
+                    return patron.test(te);
+                }
+            </script>
+
+        }

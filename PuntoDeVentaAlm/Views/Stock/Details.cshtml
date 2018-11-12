@@ -1,0 +1,65 @@
+﻿@model PuntoDeVentaAlm.Models.TBL_STOCK
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>DETALLES</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.STOCK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STOCK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PEDIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PEDIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMPROMETIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMPROMETIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("ULTIMA ACTUALIZACIÓN")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ULTIMA_FECHA_ACTUALIZACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("ALMACEN")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_ALMACENES.NOM_ALMACEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("DESCRIPCIÓN")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_PRODUCTOS.DESCRIPCION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Lista de Stock", "Index")
+</p>
