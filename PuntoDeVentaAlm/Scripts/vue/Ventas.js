@@ -105,4 +105,19 @@ $(document).ready(function () {
             cliente.defineCliente(ui.item,token);
         }
     });
-});
+
+    $('#btnNuevoCliente').click(function (){
+        $.ajax({
+            url: '/Clientes/_modalClienteNuevo',
+            type: 'POST',
+            success: function(data){
+                $('#modalCliente').html(data);
+                $('#modalCliente').modal({show: true});
+            },
+            error: function(xmlResponse){
+                alert("Error al cargar modal NUEVO CLIENTE, favor de recargar pagina")
+            }
+        })
+    });
+}
+);

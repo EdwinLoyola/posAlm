@@ -577,10 +577,10 @@
     <Content Include="Views\Inventarios\_trabajoInventario.cshtml" />
     <Content Include="Views\Inventarios\_registraInventario.cshtml" />
     <Content Include="Views\Ventas\Index.cshtml" />
+    <Content Include="Views\Clientes\_modalClienteNuevo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Clientes\" />
     <Folder Include="Views\Sales\" />
   </ItemGroup>
   <ItemGroup>
